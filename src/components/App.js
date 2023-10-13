@@ -12,7 +12,7 @@ function App() {
   useEffect(() => {
     fetch(url)
     .then(response => response.json())
-    .then(setListings);
+    .then(data => setListings([...listings, {data, favorite: false}]));
   }, [])
 
   const filteredListings = listings;
@@ -20,7 +20,10 @@ function App() {
   return (
     <div className="app">
       <Header />
-      <ListingsContainer listings={filteredListings} />
+      <ListingsContainer 
+      listings={filteredListings}
+      setListings={setListings}
+       />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from "react";
 
-function ListingCard({description, image, location}) {
+function ListingCard({id, description, image, location, favorite, toggleFavorite}) {
   return (
     <li className="card">
       <div className="image">
@@ -8,10 +8,10 @@ function ListingCard({description, image, location}) {
         <img src={image ? image : "https://via.placeholder.com/300x300"} alt={description} />
       </div>
       <div className="details">
-        {true ? (
-          <button className="emoji-button favorite active">★</button>
+        {favorite ? (
+          <button className="emoji-button favorite active" onClick={() => toggleFavorite(id)}>★</button>
         ) : (
-          <button className="emoji-button favorite">☆</button>
+          <button className="emoji-button favorite" onClick={() => toggleFavorite(id)}>☆</button>
         )}
         <strong>{description}</strong>
         <span> · {location}</span>
